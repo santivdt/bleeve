@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="row meetingrow">
         <div class="col-md-12 center">
-            <br><button class="btn btn-default" ng-click="checkAvailabilityNow()">Check availability for the upcoming hour</button>
+            <br>
+            Check availability for the upcoming hour
+            <br><button class="btn btn-default" ng-click="checkAvailabilityNow()">Check</button>
         </div>
     </div>
     <div class="row">
@@ -9,12 +11,15 @@
                 <br>
             <form class="form-inline">
                     <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" ng-model="startDate">
+                       <!-- <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" ng-model="startDate">-->
+                        <md-datepicker ng-model="startDate" md-placeholder="Enter date"></md-datepicker>
                     </div>
                     <div class="form-group">
                         <label for="startTime">From</label>
                         <input type="time" class="form-control" id="startTime" ng-model="startTime">
+                        <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true"
+                               placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" md-input">
                     </div>
                     <div class="form-group">
                         <label for="endTime">Till</label>
@@ -24,30 +29,61 @@
                 </form>
         </div>
     </div>
-    <div class="row meetingRow">
-        <div class="col-md-1"></div>
-        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 1}" ng-click="changeRoom(1)">Meetingroom 1</button>
+    <div class="row">
         <br>
-            <span ng-show="check">This room is {{availableOne}}</span>
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <span class="pull-left center room">
+                <h3>Meetingroom 1</h3>
+            </span>
+            <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableOne"></span>
+            <span class="glyphicon glyphicon-ok center" ng-show="availableOne"></span>
         </div>
         <div class="col-md-2"></div>
-        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 2}"  ng-click="changeRoom(2)">Meetingroom 2</button>
-            <br>
-            <span ng-show="check">This room is {{availableTwo}}</span>
+        <div class="col-md-2">
+            <span class="center room">
+                <h3>Meetingroom 2</h3>
+            </span>
+            <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableTwo"></span>
+            <span class="glyphicon glyphicon-ok center" ng-show="availableTwo"></span>
         </div>
         <div class="col-md-2"></div>
-        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 3}" ng-click="changeRoom(3)">Meetingroom 3</button>
-            <br>
-            <span ng-show="check">This room is {{availableThree}}</span>
+        <div class="col-md-2">
+            <span class="pull-right center room">
+                <h3>Meetingroom 3</h3>
+            </span>
+            <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableThree"></span>
+            <span class="glyphicon glyphicon-ok center" ng-show="availableThree"></span>
         </div>
         <div class="col-md-1"></div>
     </div>
-    <div class="row meetingRow">
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-        <br>
-            <table-events></table-events>
+            <div ng-cloak>
+                <br><br>
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="Meetingroom 1" ng-click="changeRoom(1)">
+                            <md-content class="md-padding">
+                                <table-events></table-events>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="Meetingroom 2" ng-click="changeRoom(2)">
+                            <md-content class="md-padding">
+                                <table-events></table-events>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="Meetingroom 3">
+                            <md-content class="md-padding" ng-click="changeRoom(3)">
+                                <table-events></table-events>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
 </div>

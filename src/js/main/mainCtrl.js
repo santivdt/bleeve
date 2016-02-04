@@ -14,6 +14,7 @@ angular.module('bleeveTest')
         $scope.room = 1;
 
 
+
         // change table that shows events to different room
         $scope.changeRoom = function(room) {
             $scope.room = room;
@@ -76,11 +77,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['santibleevetest@gmail.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableOne = ' available';
+                            $scope.availableOne = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableOne = ' taken';
+                            $scope.availableOne = false;
                             $scope.check=true;
                         }
                     },
@@ -93,11 +94,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableTwo = ' available';
+                            $scope.availableTwo =  true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableTwo = ' taken';
+                            $scope.availableTwo = false;
                             $scope.check=true;
                         }
                     },
@@ -110,11 +111,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['i2iv95bgjtcr72cqossikavpts@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableThree = ' available';
+                            $scope.availableThree =  true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableThree = ' taken';
+                            $scope.availableThree = false;
                             $scope.check=true;
                         }
                     },
@@ -170,11 +171,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['santibleevetest@gmail.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableOne = ' available';
+                            $scope.availableOne = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableOne = ' taken';
+                            $scope.availableOne = false;
                             $scope.check=true;
                         }
                     },
@@ -187,11 +188,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableTwo = ' available';
+                            $scope.availableTwo = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableTwo = ' taken';
+                            $scope.availableTwo = false;
                             $scope.check=true;
                         }
                     },
@@ -204,11 +205,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['i2iv95bgjtcr72cqossikavpts@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableThree = ' available';
+                            $scope.availableThree = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableThree = ' taken';
+                            $scope.availableThree = false;
                             $scope.check=true;
                         }
                     },
