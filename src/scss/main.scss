@@ -1,0 +1,45 @@
+$primary-color: lightblue;
+$sec-color: dodgerblue;
+
+@mixin setLinkSelectorStyle {
+  &:hover, &:link, &:active, &:visited {
+    @content;
+  }
+}
+
+.body {
+  color: white;
+}
+
+.hero {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  padding-top: 1em;
+  background-color: $primary-color;
+  min-height: 6em;
+    p {
+      font-size: medium;
+      font-style: italic;
+    }
+}
+
+.meetingRow {
+  margin-top: 1em;
+}
+
+.btn-menu {
+    background-color: $sec-color;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 darken($sec-color, 30%), 0 1px 10px 0 darken($sec-color, 10%);
+    color: white;
+    border: 0px;
+}
+
+.btn {
+    color: white;
+    @include setLinkSelectorStyle {
+        color: white;
+    }
+}
+

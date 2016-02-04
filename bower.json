@@ -1,0 +1,14 @@
+{
+  "name": "bleeveTest",
+  "version": "0.0.0",
+  "directory": "build/bower_components",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "json3": "~3.3.1",
+    "bootstrap-sass-official": "~3.1.1",
+    "bootstrap": "3.3.1",
+    "font-awesome": ">=4.1.0",
+    "angular-ui-router": "~0.2.15",
+    "moment": "~2.11.1"
+  }
+}

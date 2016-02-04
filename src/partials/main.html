@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row meetingrow">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <br><button class="btn" ng-click="checkAvailability()">Check availability now</button>
+        </div>
+    </div>
+    <div class="row meetingRow">
+        <div class="col-md-1"></div>
+        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 1}" ng-click="changeRoom(1)">Meetingroom 1</button>
+        <br>
+            <span ng-show="check">This room is {{availableOne}}</span>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 2}"  ng-click="changeRoom(2)">Meetingroom 2</button>
+            <br>
+            <span ng-show="check">This room is {{availableTwo}}</span>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><button class="btn btn-room" ng-class="{'btn-primary':room === 3}" ng-click="changeRoom(3)">Meetingroom 3</button>
+            <br>
+            <span ng-show="check">This room is {{availableThree}}</span>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row meetingRow">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+        <br>
+            <table-events></table-events>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

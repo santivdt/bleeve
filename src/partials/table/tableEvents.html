@@ -1,0 +1,40 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>Time
+        </th>
+        <th>
+            Summary
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Meetingroom
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="event in events">
+        <td>
+            {{event.start.dateTime  | date:"dd/MM/yyyy"}}
+        </td>
+        <td>
+            {{event.start.dateTime | date:"HH:mm"}} - {{event.end.dateTime | date:"HH:mm"}}
+        </td>
+        <td>
+            {{event.summary}}
+        </td>
+        <td>
+            {{event.description}}
+        </td>
+        <td>
+            {{calendar.summary}}
+        </td>
+    </tr>
+    </tbody>
+</table>

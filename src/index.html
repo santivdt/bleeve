@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bleeve</title>
+
+        <!-- inject:css -->
+        <!-- endinject -->
+
+
+        <!-- bower:css -->
+        <!-- endinject -->
+    </head>
+    <body ng-app="bleeveTest">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12 hero">
+                    Bleeve Meetingrooms
+                    <p>Get your bookings straight</p>
+                    <a ui-sref="main"  class="btn btn-menu">Overview</a>
+                    <a ui-sref="calendar"  class="btn btn-menu">Book</a>
+                    <br><br>
+                </div>
+            </div>
+            <div>
+
+                <div ui-view="">
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+        <!-- bower:js -->
+        <!-- endinject -->
+
+        <!-- inject:js -->
+        <!-- endinject -->
+    </body>
+</html>
