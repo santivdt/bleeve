@@ -99,6 +99,10 @@ gulp.task('bower', function() {
     return gulp.src([
         'src/bower_components/**/*.js',
         'src/bower_components/**/*.css',
+        'src/bower_components/**/*.eot',
+        'src/bower_components/**/*.svg',
+        'src/bower_components/**/*.ttf',
+        'src/bower_components/**/*.woff'
     ])
     .pipe(gulp.dest(config.build +'/bower_components'))
 });
