@@ -10,8 +10,8 @@ angular.module('bleeveTest')
         var idThree = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
         $scope.check = false;
         $scope.events = eventsOne.items;
-        $scope.calendar = eventsOne;
         $scope.room = 1;
+
 
 
 
@@ -21,16 +21,12 @@ angular.module('bleeveTest')
 
             if (room === 1) {
                 $scope.events = eventsOne.items;
-                $scope.calendar = eventsOne;
             }
             else if (room === 2) {
-
                 $scope.events = eventsTwo.items;
-                $scope.calendar = eventsTwo;
             }
             else {
                 $scope.events = eventsThree.items;
-                $scope.calendar = eventsThree;
             }
         };
 

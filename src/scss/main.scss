@@ -64,3 +64,26 @@ span.glyphicon-ok {
   color: green;
 }
 
+md-tooltip {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  .md-background {
+    border-radius: inherit;
+  }
+  .md-content {
+    height: auto;
+    width: 400px;
+    max-width: 400px;
+    padding: 8px;
+    white-space: initial;
+  }
+}
+@media screen and (min-width: 600px) {
+  md-tooltip .md-content {
+    font-size: 14px;
+    height: auto;
+    width: 300px;
+    padding: 8px;
+    max-width: 300px;
+  }
+}
+

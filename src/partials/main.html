@@ -11,20 +11,19 @@
                 <br>
             <form class="form-inline">
                     <div class="form-group">
-                       <!-- <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" ng-model="startDate">-->
-                        <md-datepicker ng-model="startDate" md-placeholder="Enter date"></md-datepicker>
+                       <md-datepicker ng-model="startDate" md-placeholder="Enter date"></md-datepicker>&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="form-group">
-                        <label for="startTime">From</label>
-                        <input type="time" class="form-control" id="startTime" ng-model="startTime">
-                        <input mdc-datetime-picker="" date="false" time="true" type="text" id="time" short-time="true"
-                               placeholder="Time" min-date="minDate" format="hh:mm a" ng-model="time" class=" md-input">
+                        &nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                <input id="timepicker1" type="time" class="form-control input-small" ng-model="startTime">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+                        <script type="text/javascript">
+                            $('#timepicker1').timepicker();
+                        </script>
                     </div>
-                    <div class="form-group">
-                        <label for="endTime">Till</label>
-                        <input type="time" class="form-control" id="endTime" ng-model="endTime">
-                    </div>
+
                     <button type="submit" class="btn btn-default" ng-click="checkAvailability(startDate, startTime, endTime)">Check availability</button>
                 </form>
         </div>
@@ -33,7 +32,7 @@
         <br>
         <div class="col-md-1"></div>
         <div class="col-md-2">
-            <span class="pull-left center room">
+            <span class="room">
                 <h3>Meetingroom 1</h3>
             </span>
             <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableOne"></span>
@@ -41,7 +40,7 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
-            <span class="center room">
+            <span class="room">
                 <h3>Meetingroom 2</h3>
             </span>
             <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableTwo"></span>
@@ -49,7 +48,7 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
-            <span class="pull-right center room">
+            <span class="room">
                 <h3>Meetingroom 3</h3>
             </span>
             <span class="glyphicon glyphicon glyphicon-remove center" ng-hide="availableThree"></span>
@@ -76,8 +75,8 @@
                                 <table-events></table-events>
                             </md-content>
                         </md-tab>
-                        <md-tab label="Meetingroom 3">
-                            <md-content class="md-padding" ng-click="changeRoom(3)">
+                        <md-tab label="Meetingroom 3" ng-click="changeRoom(3)">
+                            <md-content class="md-padding">
                                 <table-events></table-events>
                             </md-content>
                         </md-tab>
