@@ -5,6 +5,9 @@ angular.module('bleeveTest')
         var eventsOne = eventsOne.data;
         var eventsTwo = eventsTwo.data;
         var eventsThree = eventsThree.data;
+        var idOne = 'santibleevetest@gmail.com';
+        var idTwo = 'l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com';
+        var idThree = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
         $scope.check = false;
         $scope.events = eventsOne.items;
         $scope.calendar = eventsOne;
@@ -30,18 +33,108 @@ angular.module('bleeveTest')
             }
         };
 
+        //check availability of meetingrooms for entered date
+        $scope.checkAvailability = function(startDate, startTime, endTime) {
+            var startDateG = moment(startDate).format("YYYY-MM-DDTHH:mm:ssZ").slice(0, 11);
+            var startTimeG = moment(startTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
+            var endTimeG = moment(endTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
+
+            var startDateFinal = (startDateG + startTimeG);
+            var endDateFinal = (startDateG + endTimeG);
+
+            var dataOne = {
+                "timeMin":  startDateFinal,
+                "timeMax":  endDateFinal,
+                "items": [
+                    {
+                        "id": idOne
+                    }
+                ]
+            };
+
+            var dataTwo = {
+                "timeMin":  startDateFinal,
+                "timeMax":  endDateFinal,
+                "items": [
+                    {
+                        "id": idTwo
+                    }
+                ]
+            };
+
+            var dataThree = {
+                "timeMin":  startDateFinal,
+                "timeMax":  endDateFinal,
+                "items": [
+                    {
+                        "id": idThree
+                    }
+                ]
+            };
+
+            $http.post('https://www.googleapis.com/calendar/v3/freeBusy?key=AIzaSyB2di7px-QpK7MXbqx6k3JsgjQc2YFos6g', dataOne)
+                .then(function(response) {
+                        var busy = response.data.calendars['santibleevetest@gmail.com'].busy;
+                        if (busy.length === 0){
+                            $scope.availableOne = ' available';
+                            $scope.check=true;
+                        }
+                        else {
+                            $scope.availableOne = ' taken';
+                            $scope.check=true;
+                        }
+                    },
+                    function(response) { // optional
+                        // failed
+                    }
+                );
+
+            $http.post('https://www.googleapis.com/calendar/v3/freeBusy?key=AIzaSyB2di7px-QpK7MXbqx6k3JsgjQc2YFos6g', dataTwo)
+                .then(function(response) {
+                        var busy = response.data.calendars['l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com'].busy;
+                        if (busy.length === 0){
+                            $scope.availableTwo = ' available';
+                            $scope.check=true;
+                        }
+                        else {
+                            $scope.availableTwo = ' taken';
+                            $scope.check=true;
+                        }
+                    },
+                    function(response) { // optional
+                        // failed
+                    }
+                );
+
+            $http.post('https://www.googleapis.com/calendar/v3/freeBusy?key=AIzaSyB2di7px-QpK7MXbqx6k3JsgjQc2YFos6g', dataThree)
+                .then(function(response) {
+                        var busy = response.data.calendars['i2iv95bgjtcr72cqossikavpts@group.calendar.google.com'].busy;
+                        if (busy.length === 0){
+                            $scope.availableThree = ' available';
+                            $scope.check=true;
+                        }
+                        else {
+                            $scope.availableThree = ' taken';
+                            $scope.check=true;
+                        }
+                    },
+                    function(response) { // optional
+                        // failed
+                    }
+                );
+
+
+
+
+        };
+
         // check current availability of meetingrooms
-        $scope.checkAvailability = function() {
+        $scope.checkAvailabilityNow = function() {
             var now = moment();
             var then = moment().add(1, 'hour');
-            console.log(now);
-            console.log(then);
             var nowApi = moment(now).format("YYYY-MM-DDTHH:mm:ssZ");
             var thenApi = moment(then).format("YYYY-MM-DDTHH:mm:ssZ");
 
-            var idOne = 'santibleevetest@gmail.com';
-            var idTwo = 'l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com';
-            var idThree = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
 
             var dataOne = {
                     "timeMin":  nowApi,

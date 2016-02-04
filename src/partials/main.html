@@ -1,8 +1,27 @@
 <div class="container-fluid">
     <div class="row meetingrow">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <br><button class="btn" ng-click="checkAvailability()">Check availability now</button>
+        <div class="col-md-12 center">
+            <br><button class="btn btn-default" ng-click="checkAvailabilityNow()">Check availability for the upcoming hour</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 center">
+                <br>
+            <form class="form-inline">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" ng-model="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="startTime">From</label>
+                        <input type="time" class="form-control" id="startTime" ng-model="startTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">Till</label>
+                        <input type="time" class="form-control" id="endTime" ng-model="endTime">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="checkAvailability(startDate, startTime, endTime)">Check availability</button>
+                </form>
         </div>
     </div>
     <div class="row meetingRow">
