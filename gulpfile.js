@@ -29,7 +29,7 @@ var config = {
 // * Finally call the callback function
 gulp.task('default', function(callback) {
     runSequence('connect', 'watch',
-        ['bower', 'javascripts', 'sass'],
+        ['bower', 'javascripts', 'sass', 'img'],
         'html',
         callback);
 });
@@ -90,6 +90,13 @@ gulp.task('html', function(){
             addRootSlash: false
         }))
         .pipe(gulp.dest(config.build))
+        .pipe(livereload());
+});
+
+// IMG
+gulp.task('img', function(){
+    return gulp.src('src/img/*.png')
+        .pipe(gulp.dest('build/img'))
         .pipe(livereload());
 });
 
