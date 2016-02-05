@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('bookCtrl', function ($scope, $http) {
+    .controller('bookCtrl', function ($scope, $http, $filter) {
         //data to speed up testing
         $scope.description = 'Een evenement';
         $scope.summary = 'Vergadering';
@@ -10,33 +10,29 @@ angular.module('bleeveTest')
         //TODO insert logic for when different endday
 
         $scope.submit = function(email,
-                                  name,
-                                  summary,
-                                  description,
-                                  meetingroom,
-                                  startDate,
-                                  endDate,
-                                  startTime,
-                                    endTime)
+                                 name,
+                                 summary,
+                                 description,
+                                 meetingroom,
+                                 startDate,
+                                 endDate,
+                                 startTime,
+                                 endTime)
         {
+            //var location = meetingroom;
 
-            //TODO make filter to change the date to right format
-            var startDateG = moment(startDate).format("YYYY-MM-DDTHH:mm:ssZ").slice(0, 11);
-            var startTimeG = moment(startTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var endTimeG = moment(endTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var startDateFinal = (startDateG + startTimeG);
-            var endDateFinal = (startDateG + endTimeG);
-            var location = meetingroom;
-
+            var dates =  $filter('dateFilter')(startDate, startTime, endDate, endTime);
+            console.log(dates, 'dates from controller after filter');
+            
             //create Json to send to api
             var data = {
                 "summary": summary,
                 "location": location,
                 "start": {
-                    "dateTime": startDateFinal
+                    "dateTime": dates[0]
                 },
                 "end": {
-                    "dateTime": endDateFinal
+                    "dateTime": dates[1]
                 }
             };
             console.log(data);
