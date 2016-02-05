@@ -119,10 +119,6 @@ angular.module('bleeveTest')
                         // failed
                     }
                 );
-
-
-
-
         };
 
         // check current availability of meetingrooms
