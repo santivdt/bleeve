@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('mainCtrl', function ($scope, $http, eventsOne, eventsTwo, eventsThree) {
+    .controller('mainCtrl', function ($scope, $http, $filter, eventsOne, eventsTwo, eventsThree) {
 
         // bind data from resolve to variables
         var eventsOne = eventsOne.data;
@@ -10,9 +10,7 @@ angular.module('bleeveTest')
         var idThree = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
         $scope.check = false;
         $scope.events = eventsOne.items;
-        $scope.calendar = eventsOne;
         $scope.room = 1;
-
 
         // change table that shows events to different room
         $scope.changeRoom = function(room) {
@@ -20,25 +18,21 @@ angular.module('bleeveTest')
 
             if (room === 1) {
                 $scope.events = eventsOne.items;
-                $scope.calendar = eventsOne;
             }
             else if (room === 2) {
-
                 $scope.events = eventsTwo.items;
-                $scope.calendar = eventsTwo;
             }
             else {
                 $scope.events = eventsThree.items;
-                $scope.calendar = eventsThree;
             }
         };
 
         //check availability of meetingrooms for entered date
-        $scope.checkAvailability = function(startDate, startTime, endTime) {
+        $scope.checkAvailability = function(startDate, startTime) {
+
+            var endTimeG = moment(startTime).add(1, 'hour').format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
             var startDateG = moment(startDate).format("YYYY-MM-DDTHH:mm:ssZ").slice(0, 11);
             var startTimeG = moment(startTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var endTimeG = moment(endTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-
             var startDateFinal = (startDateG + startTimeG);
             var endDateFinal = (startDateG + endTimeG);
 
@@ -76,11 +70,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['santibleevetest@gmail.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableOne = ' available';
+                            $scope.availableOne = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableOne = ' taken';
+                            $scope.availableOne = false;
                             $scope.check=true;
                         }
                     },
@@ -93,11 +87,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableTwo = ' available';
+                            $scope.availableTwo =  true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableTwo = ' taken';
+                            $scope.availableTwo = false;
                             $scope.check=true;
                         }
                     },
@@ -110,11 +104,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['i2iv95bgjtcr72cqossikavpts@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableThree = ' available';
+                            $scope.availableThree =  true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableThree = ' taken';
+                            $scope.availableThree = false;
                             $scope.check=true;
                         }
                     },
@@ -122,10 +116,6 @@ angular.module('bleeveTest')
                         // failed
                     }
                 );
-
-
-
-
         };
 
         // check current availability of meetingrooms
@@ -170,11 +160,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['santibleevetest@gmail.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableOne = ' available';
+                            $scope.availableOne = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableOne = ' taken';
+                            $scope.availableOne = false;
                             $scope.check=true;
                         }
                     },
@@ -187,11 +177,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableTwo = ' available';
+                            $scope.availableTwo = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableTwo = ' taken';
+                            $scope.availableTwo = false;
                             $scope.check=true;
                         }
                     },
@@ -204,11 +194,11 @@ angular.module('bleeveTest')
                 .then(function(response) {
                         var busy = response.data.calendars['i2iv95bgjtcr72cqossikavpts@group.calendar.google.com'].busy;
                         if (busy.length === 0){
-                            $scope.availableThree = ' available';
+                            $scope.availableThree = true;
                             $scope.check=true;
                         }
                         else {
-                            $scope.availableThree = ' taken';
+                            $scope.availableThree = false;
                             $scope.check=true;
                         }
                     },

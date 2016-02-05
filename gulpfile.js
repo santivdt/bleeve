@@ -30,7 +30,7 @@ var config = {
 // * Finally call the callback function
 gulp.task('default', function(callback) {
     runSequence('connect', 'watch',
-        ['bower', 'javascripts', 'sass'],
+        ['bower', 'javascripts', 'sass', 'img'],
         'html',
         callback);
 });
@@ -100,12 +100,23 @@ gulp.task('html', function(){
         .pipe(livereload());
 });
 
+// IMG
+gulp.task('img', function(){
+    return gulp.src('src/img/*.png')
+        .pipe(gulp.dest('build/img'))
+        .pipe(livereload());
+});
+
 
 // BOWER
 gulp.task('bower', function() {
     return gulp.src([
         'src/bower_components/**/*.js',
         'src/bower_components/**/*.css',
+        'src/bower_components/**/*.eot',
+        'src/bower_components/**/*.svg',
+        'src/bower_components/**/*.ttf',
+        'src/bower_components/**/*.woff'
     ])
     .pipe(gulp.dest(config.build +'/bower_components'))
 });

@@ -4,7 +4,8 @@
         <th>
             Date
         </th>
-        <th>Time
+        <th>
+            Time
         </th>
         <th>
             Summary
@@ -12,13 +13,11 @@
         <th>
             Description
         </th>
-        <th>
-            Meetingroom
-        </th>
-
     </tr>
     </thead>
     <tbody>
+    <!--TODO make sure only future events are visible-->
+    <!--TODO make sure events are sorted from soonest to latest-->
     <tr ng-repeat="event in events">
         <td>
             {{event.start.dateTime  | date:"dd/MM/yyyy"}}
@@ -30,10 +29,7 @@
             {{event.summary}}
         </td>
         <td>
-            {{event.description}}
-        </td>
-        <td>
-            {{calendar.summary}}
+            {{event.description | limitTo : 50}}<span ng-show="event.description.length>50"> ...</span>
         </td>
     </tr>
     </tbody>

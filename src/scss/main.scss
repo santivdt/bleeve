@@ -47,3 +47,43 @@ $sec-color: dodgerblue;
     }
 }
 
+.room {
+    h2 {
+      font-size: 2em;
+      font-color: grey;
+    }
+}
+
+span.glyphicon-remove {
+  font-size: 3em;
+  color: red;
+}
+
+span.glyphicon-ok {
+  font-size: 3em;
+  color: green;
+}
+
+md-tooltip {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  .md-background {
+    border-radius: inherit;
+  }
+  .md-content {
+    height: auto;
+    width: 400px;
+    max-width: 400px;
+    padding: 8px;
+    white-space: initial;
+  }
+}
+@media screen and (min-width: 600px) {
+  md-tooltip .md-content {
+    font-size: 14px;
+    height: auto;
+    width: 300px;
+    padding: 8px;
+    max-width: 300px;
+  }
+}
+
