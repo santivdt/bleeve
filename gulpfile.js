@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    history = require('connect-history-api-fallback');
 
 
 //Config
@@ -51,12 +52,18 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.html', ['html']);
 });
 
-// CONNECT: Connect to local server
+// CONNECT
 gulp.task('connect', function() {
     connect.server({
         root: 'build',
-        port: 4000
-    })
+        livereload: true,
+        port: 4000,
+
+        middleware: function(connect, opt) {
+            return [ history() ];
+        }
+
+    });
 });
 
 
