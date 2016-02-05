@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('mainCtrl', function ($scope, $http, eventsOne, eventsTwo, eventsThree) {
+    .controller('mainCtrl', function ($scope, $http, $filter, eventsOne, eventsTwo, eventsThree) {
 
         // bind data from resolve to variables
         var eventsOne = eventsOne.data;
@@ -11,9 +11,6 @@ angular.module('bleeveTest')
         $scope.check = false;
         $scope.events = eventsOne.items;
         $scope.room = 1;
-
-
-
 
         // change table that shows events to different room
         $scope.changeRoom = function(room) {
@@ -31,11 +28,11 @@ angular.module('bleeveTest')
         };
 
         //check availability of meetingrooms for entered date
-        $scope.checkAvailability = function(startDate, startTime, endTime) {
+        $scope.checkAvailability = function(startDate, startTime) {
+
+            var endTimeG = moment(startTime).add(1, 'hour').format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
             var startDateG = moment(startDate).format("YYYY-MM-DDTHH:mm:ssZ").slice(0, 11);
             var startTimeG = moment(startTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var endTimeG = moment(endTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-
             var startDateFinal = (startDateG + startTimeG);
             var endDateFinal = (startDateG + endTimeG);
 

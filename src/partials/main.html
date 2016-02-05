@@ -2,6 +2,8 @@
     <div class="row meetingrow">
         <div class="col-md-12 center">
             <br>
+            <!-- TODO make sure that no glyphicons are displayed on page load -->
+            <!-- Why does this page look so fucked up-->
             Check availability for the upcoming hour
             <br><button class="btn btn-default" ng-click="checkAvailabilityNow()">Check</button>
         </div>
@@ -15,16 +17,11 @@
                     </div>
                     <div class="form-group">
                         &nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="input-group bootstrap-timepicker timepicker">
-                                <input id="timepicker1" type="time" class="form-control input-small" ng-model="startTime">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                            </div>
-                        <script type="text/javascript">
-                            $('#timepicker1').timepicker();
-                        </script>
+                        <div class="input-group">
+                            <input type="time" class="form-control input-small" ng-model="startTime">
+                        </div>
                     </div>
-
-                    <button type="submit" class="btn btn-default" ng-click="checkAvailability(startDate, startTime, endTime)">Check availability</button>
+                    <button type="submit" class="btn btn-default" ng-click="checkAvailability(startDate, startTime)">Check availability</button>
                 </form>
         </div>
     </div>
