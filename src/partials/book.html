@@ -4,14 +4,6 @@
         <br>
         <form>
             <div class="form-group">
-                Which meeting room do you want to book?
-                <select ng-model="meetingroom">
-                    <option>Meetingroom 1</option>
-                    <option>Meetingroom 2</option>
-                    <option>Meetingroom 3</option>
-                </select>
-            </div>
-            <div class="form-group">
                 Start day
                 <input type="date" class="form-control" id="startDay" ng-model="startDate">
             </div>
@@ -40,15 +32,27 @@
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" placeholder="Description" rows="3" required ng-model="description"></textarea>
             </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" ng-model="name">
+            <button class="btn btn-default" ng-click="changeShowAdd()" ng-hide="showAdd">Show additional fields</button>
+            <button class="btn btn-default" ng-click="changeShowAdd()" ng-show="showAdd">Hide additional fields</button>
+            <div ng-show="showAdd">
+                <div class="form-group">
+                    Which meeting room do you want to book?
+                    <select ng-model="meetingroom">
+                        <option>Meetingroom 1</option>
+                        <option>Meetingroom 2</option>
+                        <option>Meetingroom 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
-            </div>
-            <button type="submit" class="btn" ng-click="submit(email, name, summary, description, meetingroom, startDate, startTime, endTime)">Submit</button>
+            <button type="submit" class="btn" ng-click="submit(email, name, summary, description, meetingroom, startDate, endDate, startTime, endTime)">Submit</button>
         </form>
     </div>
     <div class="col-md-1"></div>
