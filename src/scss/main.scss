@@ -1,4 +1,4 @@
-$primary-color: lightblue;
+$primary-color: #448AFF;
 $sec-color: dodgerblue;
 
 @mixin setLinkSelectorStyle {
@@ -9,14 +9,16 @@ $sec-color: dodgerblue;
 
 .body {
   color: white;
+  font-family: "open sans", sans-serif;
 }
 
 .hero {
   color: white;
   font-size: 3em;
   text-align: center;
+  font-family: "open sans", sans-serif;
   padding-top: 1em;
-  background-color: $primary-color;
+  background: linear-gradient(to right, $primary-color, #2979FF, #2962FF);
   min-height: 6em;
     p {
       font-size: medium;
@@ -33,11 +35,22 @@ $sec-color: dodgerblue;
 }
 
 .btn-menu {
-    background-color: $sec-color;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px 0 darken($sec-color, 30%), 0 1px 10px 0 darken($sec-color, 10%);
+  padding: 20px 30px 20px 30px;
+  background-color: $primary-color;
+  font-family: "open sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  @include setLinkSelectorStyle {
     color: white;
-    border: 0px;
+  }
+}
+
+.btn-menu:hover {
+  background-color: white;
 }
 
 .btn {
