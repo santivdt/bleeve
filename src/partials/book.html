@@ -1,8 +1,18 @@
 <div class="row">
-    <div class="col-md-1"></div>
+    <div class="col-md-1">
+        <button id="authorize-button">login bla</button>
+        <button ng-click="event()" class="btn btn-default">API Call</button></div>
     <div class="col-md-10">
         <br>
         <form>
+            <div class="form-group">
+                Which meeting room do you want to book?
+                <select ng-model="meetingroom">
+                    <option>Meetingroom 1</option>
+                    <option>Meetingroom 2</option>
+                    <option>Meetingroom 3</option>
+                </select>
+            </div>
             <div class="form-group">
                 Start day
                 <input type="date" class="form-control" id="startDay" ng-model="startDate">
@@ -35,14 +45,6 @@
             <button class="btn btn-default" ng-click="changeShowAdd()" ng-hide="showAdd">Show additional fields</button>
             <button class="btn btn-default" ng-click="changeShowAdd()" ng-show="showAdd">Hide additional fields</button>
             <div ng-show="showAdd">
-                <div class="form-group">
-                    Which meeting room do you want to book?
-                    <select ng-model="meetingroom">
-                        <option>Meetingroom 1</option>
-                        <option>Meetingroom 2</option>
-                        <option>Meetingroom 3</option>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Name" ng-model="name">

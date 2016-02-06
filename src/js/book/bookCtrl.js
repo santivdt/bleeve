@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('bookCtrl', function ($scope, $http) {
+    .controller('bookCtrl', function ($scope, $http, $filter, $window, googleService) {
         //data to speed up testing
         $scope.description = 'Een evenement';
         $scope.summary = 'Vergadering';
@@ -10,43 +10,59 @@ angular.module('bleeveTest')
         //TODO insert logic for when different endday
 
         $scope.submit = function(email,
-                                  name,
-                                  summary,
-                                  description,
-                                  meetingroom,
-                                  startDate,
-                                  endDate,
-                                  startTime,
-                                    endTime)
+                                 name,
+                                 summary,
+                                 description,
+                                 meetingroom,
+                                 startDate,
+                                 endDate,
+                                 startTime,
+                                 endTime)
         {
 
-            //TODO make filter to change the date to right format
-            var startDateG = moment(startDate).format("YYYY-MM-DDTHH:mm:ssZ").slice(0, 11);
-            var startTimeG = moment(startTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var endTimeG = moment(endTime).format("YYYY-MM-DDTHH:mm:ssZ").slice(11, 25);
-            var startDateFinal = (startDateG + startTimeG);
-            var endDateFinal = (startDateG + endTimeG);
-            var location = meetingroom;
-
+            var dates =  $filter('dateFilter')(startDate, startTime, endDate, endTime);
+            console.log(dates, 'dates from controller after filter');
+            
             //create Json to send to api
             var data = {
                 "summary": summary,
                 "location": location,
                 "start": {
-                    "dateTime": startDateFinal
+                    "dateTime": dates[0]
                 },
                 "end": {
-                    "dateTime": endDateFinal
+                    "dateTime": dates[1]
                 }
             };
-            console.log(data);
-            $http.post('https://www.googleapis.com/calendar/v3/calendars/santibleevetest@gmail.com/events?key=AIzaSyB2di7px-QpK7MXbqx6k3JsgjQc2YFos6g', data);
-            console.log('na post');
+
+            if (meetingroom === 'Meetingroom 1') {
+                var calendarId = 'santibleevetest@gmail.com';
+            }
+
+            else if (meetingroom === 'Meetingroom 2') {
+                var calendarId = 'l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com';
+            }
+
+            else if (meetingroom === 'Meetingroom 3') {
+                var calendarId = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
+            }
+
+            var request = gapi.client.calendar.events.insert({
+                'calendarId': calendarId,
+                'resource': data
+            });
+            request.execute(function(data) {
+                console.log('Event created: ',data);
+            });
         };
 
         $scope.changeShowAdd = function () {
             $scope.showAdd = !$scope.showAdd;
-        }
+        };
+
+        $window.ready= function() {
+            console.log('GOOGLEREADY');
+        };
     });
 
 

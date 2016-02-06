@@ -13,9 +13,3 @@ angular.module('bleeveTest', [
         requireBase: false
     });
 });
-
-
-
-
-
-
