@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('bookCtrl', function ($scope, $http, $filter) {
+    .controller('bookCtrl', function ($scope, $http, $filter, $window, googleService) {
         //data to speed up testing
         $scope.description = 'Een evenement';
         $scope.summary = 'Vergadering';
@@ -19,7 +19,6 @@ angular.module('bleeveTest')
                                  startTime,
                                  endTime)
         {
-            //var location = meetingroom;
 
             var dates =  $filter('dateFilter')(startDate, startTime, endDate, endTime);
             console.log(dates, 'dates from controller after filter');
@@ -35,14 +34,35 @@ angular.module('bleeveTest')
                     "dateTime": dates[1]
                 }
             };
-            console.log(data);
-            $http.post('https://www.googleapis.com/calendar/v3/calendars/santibleevetest@gmail.com/events?key=AIzaSyB2di7px-QpK7MXbqx6k3JsgjQc2YFos6g', data);
-            console.log('na post');
+
+            if (meetingroom === 'Meetingroom 1') {
+                var calendarId = 'santibleevetest@gmail.com';
+            }
+
+            else if (meetingroom === 'Meetingroom 2') {
+                var calendarId = 'l7qoh0gl56n1lrok0r5t23dc80@group.calendar.google.com';
+            }
+
+            else if (meetingroom === 'Meetingroom 3') {
+                var calendarId = 'i2iv95bgjtcr72cqossikavpts@group.calendar.google.com';
+            }
+
+            var request = gapi.client.calendar.events.insert({
+                'calendarId': calendarId,
+                'resource': data
+            });
+            request.execute(function(data) {
+                console.log('Event created: ',data);
+            });
         };
 
         $scope.changeShowAdd = function () {
             $scope.showAdd = !$scope.showAdd;
-        }
+        };
+
+        $window.ready= function() {
+            console.log('GOOGLEREADY');
+        };
     });
 
 
