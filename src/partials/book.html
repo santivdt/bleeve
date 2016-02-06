@@ -1,61 +1,62 @@
 <div class="row">
-    <div class="col-md-1">
-        <button id="authorize-button">login bla</button>
-        <button ng-click="event()" class="btn btn-default">API Call</button></div>
+    <div class="col-md-1"></div>
     <div class="col-md-10">
+        <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Meetingroom</label>
+                <md-select ng-model="meetingroom">
+                    <!-- todo send calendar Id as value so no need for if loop in controller-->
+                    <md-option>Meetingroom 1</md-option>
+                    <md-option>Meetingroom 2</md-option>
+                    <md-option>Meetingroom 3</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+            <label>Summary</label>
+            <input type="text" ng-model="summary" required>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea type="text" ng-model="description"></textarea>
+        </md-input-container>
+        <br><br>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Date</label>
+                <input ng-model="startTime" type="date">
+            </md-input-container>
+            <!--<md-datepicker ng-model="startDate" md-placeholder="Date"></md-datepicker>-->
+            <!--<md-checkbox ng-model="diffEndday" aria-label="Checkbox 1" ng-hide="diffEndday">-->
+            <!--Event has different endday-->
+            <!--</md-checkbox>-->
+            <!--<md-datepicker ng-show="diffEndday" ng-model="endDate" md-placeholder="End date"></md-datepicker>-->
+            <!--<span class="glyphicon glyphicon-remove" ng-show="diffEndday" ng-click="diffEndday = false"></span>-->
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Starts at</label>
+                <input ng-model="startTime" type="time">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Ends at</label>
+                <input ng-model="endTime" type="time">
+            </md-input-container>
+        </div>
+        <br><br>
+        <md-button class="md-raised md-primary btn-fw" ng-hide="showAdd" ng-click="changeShowAdd()">Show additional fields</md-button>
+        <div layout-gt-sm="row" ng-show="showAdd">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input ng-model="name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Email</label>
+                <input ng-model="email" type="email">
+            </md-input-container>
+        </div>
+
+        <md-button class="md-raised md-primary btn-fw" ng-show="showAdd" ng-click="changeShowAdd()">Hide additional fields</md-button>
         <br>
-        <form>
-            <div class="form-group">
-                Which meeting room do you want to book?
-                <select ng-model="meetingroom">
-                    <option>Meetingroom 1</option>
-                    <option>Meetingroom 2</option>
-                    <option>Meetingroom 3</option>
-                </select>
-            </div>
-            <div class="form-group">
-                Start day
-                <input type="date" class="form-control" id="startDay" ng-model="startDate">
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="diffEndday"> Event has different endday
-                </label>
-            </div>
-            <div class="form-group" ng-show="diffEndday">
-                End day
-                <input type="date" class="form-control"  ng-model="endDate">
-            </div>
-            <div class="form-group">
-                Starts at
-                <input type="time" class="form-control" ng-model="startTime">
-            </div>
-            <div class="form-group">
-                Ends at
-                <input type="time" class="form-control" ng-model="endTime">
-            </div>
-            <div class="form-group">
-                <label for="summary">Summary</label>
-                <input type="text" class="form-control" id="summary" placeholder="Summary" ng-model="summary">
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" placeholder="Description" rows="3" required ng-model="description"></textarea>
-            </div>
-            <button class="btn btn-default" ng-click="changeShowAdd()" ng-hide="showAdd">Show additional fields</button>
-            <button class="btn btn-default" ng-click="changeShowAdd()" ng-show="showAdd">Hide additional fields</button>
-            <div ng-show="showAdd">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
-                </div>
-            </div>
-            <button type="submit" class="btn" ng-click="submit(email, name, summary, description, meetingroom, startDate, endDate, startTime, endTime)">Submit</button>
-        </form>
+        <md-button class="md-raised btn-fw" ng-click="submit(email, name, summary, description, meetingroom, startDate, endDate, startTime, endTime)">Submit</md-button>
     </div>
     <div class="col-md-1"></div>
 </div>

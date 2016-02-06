@@ -1,5 +1,6 @@
 $primary-color: lightblue;
 $sec-color: dodgerblue;
+$green: lightgreen;
 
 @mixin setLinkSelectorStyle {
   &:hover, &:link, &:active, &:visited {
@@ -54,12 +55,12 @@ $sec-color: dodgerblue;
     }
 }
 
-span.glyphicon-remove {
+span.glyphicon-remove.remove-main {
   font-size: 3em;
   color: red;
 }
 
-span.glyphicon-ok {
+span.glyphicon-ok.ok-main {
   font-size: 3em;
   color: green;
 }
@@ -87,3 +88,11 @@ md-tooltip {
   }
 }
 
+.btn-fw {
+  display: block;
+  width: 100%;
+}
+a.md-button.md-default-theme.md-raised, a.md-button.md-raised, .md-button.md-default-theme.md-raised, .md-button.md-raised {
+  background-color: #1abc9c;
+  color: white;
+}
