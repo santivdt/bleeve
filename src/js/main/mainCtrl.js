@@ -1,5 +1,5 @@
 angular.module('bleeveTest')
-    .controller('mainCtrl', function ($scope, $http, $filter, eventsOne, eventsTwo, eventsThree) {
+    .controller('mainCtrl', function ($scope, $http, $filter, $mdDialog, $mdMedia, eventsOne, eventsTwo, eventsThree) {
 
         // bind data from resolve to variables
         var eventsOne = eventsOne.data;
@@ -207,4 +207,29 @@ angular.module('bleeveTest')
                     }
                 );
         };
+
+        //dialog to book
+        $scope.bookRoom = function(ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+            $mdDialog.show({
+                    title: 'Book appointment',
+                    controller: 'bookCtrl',
+                    templateUrl: '../../partials/bookModal.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: useFullScreen,
+                })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+            $scope.$watch(function() {
+                return $mdMedia('xs') || $mdMedia('sm');
+            }, function(wantsFullScreen) {
+                $scope.customFullscreen = (wantsFullScreen === true);
+            });
+        };
+
 });

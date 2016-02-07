@@ -1,0 +1,71 @@
+<form name="bookForm">
+    <div layout-gt-xs="row">
+        <md-input-container class="md-block" flex-gt-xs required name="meetingRoom">
+            <label>Meetingroom</label>
+            <md-select ng-model="meetingroom" name="meetingRoom" required>
+                <!-- todo send calendar Id as value so no need for if loop in controller-->
+                <md-option>Meetingroom 1</md-option>
+                <md-option>Meetingroom 2</md-option>
+                <md-option>Meetingroom 3</md-option>
+            </md-select>
+            <div ng-messages="bookForm.meetingRoom.$error">
+                <div ng-message="required">Please pick a meetingroom</div>
+            </div>
+        </md-input-container>
+    </div>
+    <md-input-container class="md-block">
+        <label>Summary</label>
+        <input type="text" name="summary" ng-model="summary" required>
+        <div ng-messages="bookForm.summary.$error">
+            <div ng-message="required">Please provide a summary</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label>Description</label>
+        <textarea name="description" type="text" ng-model="description"></textarea>
+    </md-input-container>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Date</label>
+            <input ng-model="startTime" name="startDate" type="date" required>
+            <div ng-messages="bookForm.startDate.$error">
+                <div ng-message="required">Please provide a startdate</div>
+            </div>
+        </md-input-container>
+        <!--<md-datepicker ng-model="startDate" md-placeholder="Date"></md-datepicker>-->
+        <!--<md-checkbox ng-model="diffEndday" aria-label="Checkbox 1" ng-hide="diffEndday">-->
+        <!--Event has different endday-->
+        <!--</md-checkbox>-->
+        <!--<md-datepicker ng-show="diffEndday" ng-model="endDate" md-placeholder="End date"></md-datepicker>-->
+        <!--<span class="glyphicon glyphicon-remove" ng-show="diffEndday" ng-click="diffEndday = false"></span>-->
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Starts at</label>
+            <input ng-model="startTime" name="startTime" type="time" required>
+            <div ng-messages="bookForm.startTime.$error">
+                <div ng-message="required">Please provide a start time</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Ends at</label>
+            <!-- TODO validation for greater than start Time does not work-->
+            <input ng-model="endTime" name="endTime" type="time" min="startTime">
+            <div ng-messages="bookForm.endTime.$error">
+                <div ng-message="min">Should be later than start time</div>
+            </div>
+        </md-input-container>
+    </div>
+    <br>
+    <button class="btn-std btn-2 btn-fw" ng-hide="showAdd" ng-click="changeShowAdd()">Show additional fields</button>
+    <div layout-gt-sm="row" ng-show="showAdd">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Name</label>
+            <input ng-model="name">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Email</label>
+            <input ng-model="email" type="email">
+        </md-input-container>
+    </div>
+    <button class="btn-std btn-2 btn-fw" ng-show="showAdd" ng-click="changeShowAdd()">Hide additional fields</button>
+</form>
+

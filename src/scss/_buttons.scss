@@ -31,3 +31,44 @@ a.md-button.md-default-theme.md-raised, a.md-button.md-raised, .md-button.md-def
     color: white!important;
   }
 }
+
+// std button, change color and hover properties for individual buttons
+.btn-std {
+  border: 0;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  align-items: center;
+  min-height: 36px;
+  white-space: nowrap;
+  min-width: 88px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  letter-spacing: 0.010em;
+  display: inline-block;
+  padding: 0 6px;
+  margin: 1em 6px 0 8px;
+  line-height: 36px;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn-submit {
+  background-color: $green;
+  color: white;
+  &:hover {
+    background-color: darken( $green, 10% );
+  }
+}
+
+.btn-2 {
+  background-color: $button;
+  color: white;
+  &:hover {
+    background-color: darken( $button, 10% );
+  }
+}

@@ -1,10 +1,10 @@
 angular.module('bleeveTest')
-    .controller('bookCtrl', function ($scope, $http, $filter, $window, googleService) {
+    .controller('bookCtrl', function ($scope, $http, $filter, $window, googleService, $mdDialog) {
         //data to speed up testing
-        $scope.description = 'Een evenement';
-        $scope.summary = 'Vergadering';
-        $scope.email = 'santi@oneplanetcrowd.nl';
-        $scope.name = 'Santi';
+        //$scope.description = 'Een evenement';
+        //$scope.summary = 'Vergadering';
+        //$scope.email = 'santi@oneplanetcrowd.nl';
+        //$scope.name = 'Santi';
         $scope.showAdd = false;
 
         //TODO insert logic for when different endday
@@ -62,6 +62,11 @@ angular.module('bleeveTest')
 
         $window.ready= function() {
             console.log('GOOGLEREADY');
+        };
+
+        $scope.closeModal = function() {
+            console.log('close');
+            $mdDialog.hide();
         };
     });
 

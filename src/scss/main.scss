@@ -13,7 +13,8 @@
   text-align: center;
   font-family: "open sans", sans-serif;
   padding-top: 1em;
-  background: linear-gradient(to right, $primary-color, #2979FF, #2962FF);
+  //background: linear-gradient(to right, $button, #2979FF, #2962FF);
+  background: linear-gradient(to right, $button, $button-l1, $button-l2);
   min-height: 6em;
     p {
       font-size: medium;
