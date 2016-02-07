@@ -1,0 +1,33 @@
+@import 'colors';
+
+// make button full-width
+.btn-fw {
+  display: block;
+  width: 100%;
+}
+
+// change color of material button
+a.md-button.md-default-theme.md-raised, a.md-button.md-raised, .md-button.md-default-theme.md-raised, .md-button.md-raised {
+  background-color: $green;
+  color: white;
+}
+
+//menu buttons
+.btn-menu {
+  padding: 20px 30px 20px 30px;
+  background-color: $primary-color;
+  font-family: "open sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  &:hover {
+    background-color: white;
+    color: black!important;
+  }
+  &:focus {
+    color: white!important;
+  }
+}

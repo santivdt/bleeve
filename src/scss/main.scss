@@ -1,12 +1,6 @@
-$primary-color: #448AFF;
-$sec-color: dodgerblue;
-$green: lightgreen;
-
-@mixin setLinkSelectorStyle {
-  &:hover, &:link, &:active, &:visited {
-    @content;
-  }
-}
+@import 'colors';
+@import 'buttons';
+@import 'glyphicon';
 
 .body {
   color: white;
@@ -27,38 +21,8 @@ $green: lightgreen;
     }
 }
 
-.meetingRow {
+.row-mt-1 {
   margin-top: 1em;
-}
-
-.center {
-  text-align: center;
-}
-
-.btn-menu {
-  padding: 20px 30px 20px 30px;
-  background-color: $primary-color;
-  font-family: "open sans", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  @include setLinkSelectorStyle {
-    color: white;
-  }
-}
-
-.btn-menu:hover {
-  background-color: white;
-}
-
-.btn {
-    color: white;
-    @include setLinkSelectorStyle {
-        color: white;
-    }
 }
 
 .room {
@@ -66,46 +30,4 @@ $green: lightgreen;
       font-size: 2em;
       font-color: grey;
     }
-}
-
-span.glyphicon-remove.remove-main {
-  font-size: 3em;
-  color: red;
-}
-
-span.glyphicon-ok.ok-main {
-  font-size: 3em;
-  color: green;
-}
-
-md-tooltip {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  .md-background {
-    border-radius: inherit;
-  }
-  .md-content {
-    height: auto;
-    width: 400px;
-    max-width: 400px;
-    padding: 8px;
-    white-space: initial;
-  }
-}
-@media screen and (min-width: 600px) {
-  md-tooltip .md-content {
-    font-size: 14px;
-    height: auto;
-    width: 300px;
-    padding: 8px;
-    max-width: 300px;
-  }
-}
-
-.btn-fw {
-  display: block;
-  width: 100%;
-}
-a.md-button.md-default-theme.md-raised, a.md-button.md-raised, .md-button.md-default-theme.md-raised, .md-button.md-raised {
-  background-color: #1abc9c;
-  color: white;
 }
