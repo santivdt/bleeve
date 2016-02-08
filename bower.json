@@ -10,8 +10,6 @@
     "font-awesome": ">=4.1.0",
     "angular-ui-router": "~0.2.15",
     "moment": "~2.11.1",
-    "angular-material": "~1.0.4",
-    "angular-material-datetimepicker": "~1.2.6",
-    "bootstrap-timepicker": "~0.5.2"
+    "angular-material": "~1.0.4"
   }
 }

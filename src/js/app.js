@@ -1,8 +1,7 @@
 angular.module('bleeveTest', [
     'ui.router',
     'ngMaterial',
-    'ngMessages',
-    'ngMaterialDatePicker'
+    'ngMessages'
 ]).config(function($urlRouterProvider, $locationProvider) {
     'use strict';
     $urlRouterProvider
